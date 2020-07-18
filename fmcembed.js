@@ -15,7 +15,7 @@ var fmc_pagelink  = document.createElement('link');
 fmc_pagelink.id   = fmcCSSid;
 fmc_pagelink.rel  = 'stylesheet';
 fmc_pagelink.type = 'text/css';
-fmc_pagelink.href = 'https://facemapping.me/stylesheets/style.min.css?'+sessionTimeString;
+fmc_pagelink.href = 'https://skinanalysis.me/stylesheets/style.min.css?'+sessionTimeString;
 fmc_pagelink.media = 'all';
 //fmc_pagehead.appendChild(fmc_pagelink);
 dmlfmcWrapperElement.appendChild(fmc_pagelink);
@@ -43,7 +43,7 @@ dmlfmcWrapperElement.style.width = window.fmc_maxwidth;
 
 function logOnLocalHostFrontEnd(inStringBefore,inVariable){
 	inStringBefore = (inStringBefore === undefined) ? '' : inStringBefore;
-	if (/localhost/g.test("https://facemapping.me") || /192\.168\.0\./g.test("https://facemapping.me") || /\.ngrok\.io/g.test("https://facemapping.me") || /facemappingconsumer-staging\.herokuapp/g.test("https://facemapping.me") || fmcFlLgPp){
+	if (/localhost/g.test("https://skinanalysis.me") || /192\.168\.0\./g.test("https://skinanalysis.me") || /\.ngrok\.io/g.test("https://skinanalysis.me") || /skinanalysisconsumer-staging\.herokuapp/g.test("https://skinanalysis.me") || fmcFlLgPp){
 		if (inVariable == undefined){
 			console.log(inStringBefore)
 		}else{
@@ -302,8 +302,8 @@ function fmcOpenApp(){
 		if (!window.fmc_isEmbed){
 			dmlfmcWrapperElement.style.height = "100vh";
 		}
-		dmlfmcWrapperElement.innerHTML = '<div id="fmc_browser_not_sup_wrapper"><div id="fmc_browser_error_image"><img src="https://facemapping.me/img/fmc_face_error.svg"/></div><p>We don\'t currently support this browser. Please reopen this page in a different browser, such as <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>.</p></div>' + dmlfmcWrapperElement.innerHTML;
-		dmlfmcWrapperElement.style.background = "url('https://facemapping.me/img/screen2-bg.png') no-repeat center center";
+		dmlfmcWrapperElement.innerHTML = '<div id="fmc_browser_not_sup_wrapper"><div id="fmc_browser_error_image"><img src="https://skinanalysis.me/img/fmc_face_error.svg"/></div><p>We don\'t currently support this browser. Please reopen this page in a different browser, such as <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>.</p></div>' + dmlfmcWrapperElement.innerHTML;
+		dmlfmcWrapperElement.style.background = "url('https://skinanalysis.me/img/screen2-bg.png') no-repeat center center";
 		dmlfmcWrapperElement.style.backgroundSize= "cover";
 	}else{
 
@@ -335,7 +335,7 @@ function fmcOpenApp(){
 		},10)
 		//setTimeout(function(){fmcSendGAIndia("openApp","loading full script");},2000);
 
-		getEmbedHtmlData('https://facemapping.me/fmc?'+sessionTimeString, function(res)  {
+		getEmbedHtmlData('https://skinanalysis.me/fmc?'+sessionTimeString, function(res)  {
 
 			if (window.fmc_isEmbed && window.fmc_hasBanner){
 				let fmcBannerElement = document.getElementById("fmc_cta_banner");
@@ -351,18 +351,18 @@ function fmcOpenApp(){
 					dmlfmcWrapperElement.style.height = window.fmc_maxheight;
 					dmlfmcWrapperElement.style.maxHeight = window.fmc_maxheight;
 
-					dmlfmc_getScript('https://facemapping.me/script.js?'+sessionTimeString,function(){
+					dmlfmc_getScript('https://skinanalysis.me/script.js?'+sessionTimeString,function(){
 						document.getElementById("fmcBody").style.opacity = 1;
 						//dmlfmc_getScript_withAttributes("https://consent.cookiebot.com/uc.js",{"data-cbid":"9a0e10ab-b363-4aea-857e-5dedb771dc33", "id":"Cookiebot"},function(resCookieBot){})
 					});
 
-					dmlfmc_getScript('https://facemapping.me/js/hotjar.js?'+sessionTimeString,function(){
+					dmlfmc_getScript('https://skinanalysis.me/js/hotjar.js?'+sessionTimeString,function(){
 						//document.getElementById("fmcBody").style.opacity = 1;
 						logOnLocalHostFrontEnd("added htjar");
 					});
 
 
-					if (/localhost/g.test("https://facemapping.me") || /192\.168\.0\./g.test("https://facemapping.me") || /\.ngrok\.io/g.test("https://facemapping.me") || /facemappingconsumer-staging\.herokuapp/g.test("https://facemapping.me") ){
+					if (/localhost/g.test("https://skinanalysis.me") || /192\.168\.0\./g.test("https://skinanalysis.me") || /\.ngrok\.io/g.test("https://skinanalysis.me") || /skinanalysisconsumer-staging\.herokuapp/g.test("https://skinanalysis.me") ){
 					}else{
 						dmlfmc_getScript_withAttributes('https://browser.sentry-cdn.com/5.6.3/bundle.min.js',
 						{"integrity":"sha384-/Cqa/8kaWn7emdqIBLk3AkFMAHBk0LObErtMhO+hr52CntkaurEnihPmqYj3uJho", "crossorigin":"anonymous"},
@@ -386,16 +386,16 @@ function fmcOpenApp(){
 					document.getElementById("fmcBody").style.height = heightLimit + "px";
 				}
 
-				dmlfmc_getScript('https://facemapping.me/script.js?'+sessionTimeString,function(){
+				dmlfmc_getScript('https://skinanalysis.me/script.js?'+sessionTimeString,function(){
 					document.getElementById("fmcBody").style.opacity = 1;
 				});
 
-				dmlfmc_getScript('https://facemapping.me/js/hotjar.js?'+sessionTimeString,function(){
+				dmlfmc_getScript('https://skinanalysis.me/js/hotjar.js?'+sessionTimeString,function(){
 					//document.getElementById("fmcBody").style.opacity = 1;
 					logOnLocalHostFrontEnd("added htjar");
 				});
 
-				if (/localhost/g.test("https://facemapping.me") || /192\.168\.0\./g.test("https://facemapping.me") || /\.ngrok\.io/g.test("https://facemapping.me") || /facemappingconsumer-staging\.herokuapp/g.test("https://facemapping.me") ){
+				if (/localhost/g.test("https://skinanalysis.me") || /192\.168\.0\./g.test("https://skinanalysis.me") || /\.ngrok\.io/g.test("https://skinanalysis.me") || /skinanalysisconsumer-staging\.herokuapp/g.test("https://skinanalysis.me") ){
 				}else{
 					dmlfmc_getScript_withAttributes('https://browser.sentry-cdn.com/5.6.3/bundle.min.js',
 					{"integrity":"sha384-/Cqa/8kaWn7emdqIBLk3AkFMAHBk0LObErtMhO+hr52CntkaurEnihPmqYj3uJho", "crossorigin":"anonymous"},
@@ -480,7 +480,7 @@ function fmcMakeBanner(){
 		document.getElementById("fmc_banner_inner_part").style.width = innerBannerWidth+"px";
 		document.getElementById("fmc_banner_inner_part").style.marginLeft = "0";
 
-		document.getElementById("fmc_banner_inner_part").style.backgroundImage = 'url("https://facemapping.me/img/banner_head.png"), url("https://facemapping.me/img/banner_grid_left.png")';
+		document.getElementById("fmc_banner_inner_part").style.backgroundImage = 'url("https://skinanalysis.me/img/banner_head.png"), url("https://skinanalysis.me/img/banner_grid_left.png")';
 
 		document.getElementById("fmc_banner_inner_part").style.backgroundPosition = 0.5*bannerWidth + "px center, left bottom";
 		document.getElementById("fmc_banner_inner_part").style.backgroundSize = "contain, 70%";
@@ -574,7 +574,7 @@ if ( (fmc_isFBIAB && "FALSE" == "TRUE") || (fmc_isInstagramIAB && "FALSE" == "TR
 		}else{
 			fmcUrlParams = "?fmc_src_hst="+window.location.href.split("?")[0] + window.location.search.replace(/^\?/g,"&");
 		}
-		window.location = "https://facemapping.me/dmybytes" + fmcUrlParams;
+		window.location = "https://skinanalysis.me/dmybytes" + fmcUrlParams;
 }
 
 if (window.location.search.indexOf("fmc_hid") > -1){

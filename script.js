@@ -1,6 +1,6 @@
 var fmcForcedPage = "";
 var fmcForcedCountry = "";
-window.fmc_backendToUse = "https://api.facemapping.me";
+window.fmc_backendToUse = "https://api.skinanalysis.me";
 
 window.fmc_curPage = "init";
 
@@ -184,7 +184,7 @@ let reportError = (messageObj) => {
 	var xhr = new XMLHttpRequest()
 
 	messageObj.value += "\nuuid: "+fmcCustomUID;
-	messageObj.value += "\nFrontend: https://facemapping.me";
+	messageObj.value += "\nFrontend: https://skinanalysis.me";
 	messageObj.value += "\nBackend: "+window.fmc_backendToUse;
 	messageObj.value += "\nPage: "+window.location.href;
 
@@ -228,7 +228,7 @@ let reportError = (messageObj) => {
 	messageObj.value += connectionInfoString;
 
 
-	xhr.open('POST', 'https://facemapping.me' + "/report-error" )
+	xhr.open('POST', 'https://skinanalysis.me' + "/report-error" )
 	xhr.setRequestHeader('Content-Type', 'application/json')
 	xhr.onreadystatechange = function(){
 		if (this.readyState == 4){
@@ -252,7 +252,7 @@ let reportDioxError = (messageObj) => {
 	logOnLocalHostFrontEnd("SENDING DIOXIDE ERROR TO SLACK - "+ JSON.stringify(messageObj))
 
 
-	xhr.open('POST', 'https://facemapping.me' + "/report-error" )
+	xhr.open('POST', 'https://skinanalysis.me' + "/report-error" )
 	xhr.setRequestHeader('Content-Type', 'application/json')
 	xhr.onreadystatechange = function(){
 		if (this.readyState == 4){
@@ -364,24 +364,24 @@ var fmcCameraDict={
 	perfect : "\u2705 Perfect - hold still please"
 }
 
-dmlfmc_getScript('https://facemapping.me/face-api.js?'+sessionTimeString,function(){
+dmlfmc_getScript('https://skinanalysis.me/face-api.js?'+sessionTimeString,function(){
 	console.log("face-api.js loaded");
 	faceApiLoaded = true;
-	dmlfmc_getScript('https://facemapping.me/vendor/face/js/commons.js?'+sessionTimeString,function(){
+	dmlfmc_getScript('https://skinanalysis.me/vendor/face/js/commons.js?'+sessionTimeString,function(){
 		console.log("vendor commons.js loaded");
 		commonLoaded = true;
 	});
-	dmlfmc_getScript('https://facemapping.me/vendor/face/js/drawing.js?'+sessionTimeString,function(){
+	dmlfmc_getScript('https://skinanalysis.me/vendor/face/js/drawing.js?'+sessionTimeString,function(){
 		console.log("vendor drawing.js loaded");
 		drawingLoaded = true;
 	});
-	dmlfmc_getScript('https://facemapping.me/vendor/face/js/faceDetectionControls.js?'+sessionTimeString,function(){
+	dmlfmc_getScript('https://skinanalysis.me/vendor/face/js/faceDetectionControls.js?'+sessionTimeString,function(){
 		console.log("vendor faceDetectionControls.js loaded");
 		faceDetectionControlsLoaded = true;
 	});
 });
 
-dmlfmc_getScript('https://facemapping.me/vendor/exif.js?'+sessionTimeString,function(){
+dmlfmc_getScript('https://skinanalysis.me/vendor/exif.js?'+sessionTimeString,function(){
 	console.log("vendor exif.js loaded");
 });
 
@@ -2270,7 +2270,7 @@ var supportedLanguages = {
 
 }
 
-if ( "https://facemapping.me" == "https://facemappingconsumer-production.herokuapp.com" || "https://facemapping.me" == "https://facemapping.me"){
+if ( "https://skinanalysis.me" == "https://skinanalysisconsumer-production.herokuapp.com" || "https://skinanalysis.me" == "https://skinanalysis.me"){
 	disabledProdLanguages.forEach((item)=>{
 		delete supportedLanguages[item];
 	})
@@ -2357,7 +2357,7 @@ function getAvailableLanguages(path = "/availableLanguages"){
 
 		function requestFrontendForAvailLang(callback){
 			let xhr = new XMLHttpRequest();
-			xhr.open("GET", "https://facemapping.me" + path );
+			xhr.open("GET", "https://skinanalysis.me" + path );
 			xhr.setRequestHeader('Content-Type', 'application/json')
 			xhr.onreadystatechange = function(){
 
@@ -2526,7 +2526,7 @@ function getLanguageFileFromAvailable(langCode, langCodeList, callback){
 
 function getLanguageFile(fileName,callback){
 	let xhr = new XMLHttpRequest();
-	xhr.open("GET", "https://facemapping.me/lang/"+fileName+"?"+fmcSessionTimeString );
+	xhr.open("GET", "https://skinanalysis.me/lang/"+fileName+"?"+fmcSessionTimeString );
 	xhr.setRequestHeader('Content-Type', 'text/plain');
 	xhr.onreadystatechange = function(){
 
@@ -3108,12 +3108,12 @@ function updateGdprAndEndPoints(locObj, showGdpr=false){
 
 	logOnLocalHostFrontEnd("gdrpData: ", locObj);
 	if (locObj.region == "EU"){
-		if ("https://api.facemapping.me" == "https://api.facemapping.me" || "https://api.facemapping.me" == "https://imb-backend.herokuapp.com"){
+		if ("https://api.skinanalysis.me" == "https://api.skinanalysis.me" || "https://api.skinanalysis.me" == "https://imb-backend.herokuapp.com"){
 			window.fmc_backendToUse = "https://imb-backend-eu.herokuapp.com";
 		}
 	}
 	if (locObj.country_code=="CA"){
-		if ("https://api.facemapping.me" == "https://api.facemapping.me" ){
+		if ("https://api.skinanalysis.me" == "https://api.skinanalysis.me" ){
 			window.fmc_backendToUse = "https://imb-backend-ca.herokuapp.com";
 		}
 	}
@@ -3136,7 +3136,7 @@ function updateGdprAndEndPoints(locObj, showGdpr=false){
 
 	setUpZendesk();
 
-	if ( locObj.country_code == "DE" && /facemapping.me($|:)/g.test(window.location.hostname) ){
+	if ( locObj.country_code == "DE" && /skinanalysis.me($|:)/g.test(window.location.hostname) ){
 
 	  let pathElements = window.location.pathname.split("/");
 	  try{
@@ -3146,7 +3146,7 @@ function updateGdprAndEndPoints(locObj, showGdpr=false){
 	    }
 
 	  }catch(err){
-	    console.error("Error in getting facemapping.me path elements - ",err)
+	    console.error("Error in getting skinanalysis.me path elements - ",err)
 	  }
 	}
 
@@ -3758,11 +3758,11 @@ let submitEmailForm = (evt)=>{
 						"hashid" : window.facemap.hashid, //document.getElementById("fmc_submit_form_hashid").value,
 						"subscribe" : document.getElementById("fmc_submit_form_subscribe").value,
 						"email" : document.getElementById("fmc_submit_form_email").value,
-						"from_email" : "facemapping@dermalogica.com",
+						"from_email" : "skinanalysis@dermalogica.com",
 						"email_subject": window.facemap.email_subject,
 						"html_email_message" : window.facemap.email_html,  //.replace(/\"/g, "'"),
 						"full_results_url" : window.location.href,
-						"frontend_url" : "https://facemapping.me"
+						"frontend_url" : "https://skinanalysis.me"
 					}
 
 
@@ -4413,7 +4413,7 @@ let getStoreLocations = (callback)=>{
 		let fmc_lat = position.coords.latitude;
 		let fmc_lng = position.coords.longitude;
 
-		if ("https://facemapping.me"=="http://localhost:5000" || "https://facemapping.me"=="http://192.168.0.201:5000" || /\.ngrok\.io/g.test("https://facemapping.me")){
+		if ("https://skinanalysis.me"=="http://localhost:5000" || "https://skinanalysis.me"=="http://192.168.0.201:5000" || /\.ngrok\.io/g.test("https://skinanalysis.me")){
 			logOnLocalHostFrontEnd("geolocation coords - before dev change: ",{lat:fmc_lat,lng:fmc_lng})
 			fmc_lat = 33.8559007;
 			fmc_lng = -118.2589146;
@@ -4423,7 +4423,7 @@ let getStoreLocations = (callback)=>{
 
 		logOnLocalHostFrontEnd("geolocation coords: ",{lat:fmc_lat,lng:fmc_lng})
 		let xhr = new XMLHttpRequest();
-		xhr.open("GET", "https://facemapping.me/getStoreLocations?lat="+ fmc_lat + "&lng="+ fmc_lng + fmcStoreLocatorExtraParameters );
+		xhr.open("GET", "https://skinanalysis.me/getStoreLocations?lat="+ fmc_lat + "&lng="+ fmc_lng + fmcStoreLocatorExtraParameters );
 		xhr.onload = function(evt){
 			let response = this.responseText;
 			if (typeof response == "string"){
@@ -4977,7 +4977,7 @@ let updateConcerns = ()=>{
 		}
 		concernContainer.innerHTML = htmlString;
 		sortedConcerns.forEach((concern,index)=>{
-			document.getElementById("fmc_results_category_content_"+concern.name).style.backgroundImage = 'url("https://facemapping.me/img/concerns/'+concern.name+'-icon.png")';
+			document.getElementById("fmc_results_category_content_"+concern.name).style.backgroundImage = 'url("https://skinanalysis.me/img/concerns/'+concern.name+'-icon.png")';
 		});
 
 		if (document.getElementById("fmcBody").offsetWidth <= 768){
@@ -5082,7 +5082,7 @@ let updateProductRecommendations = ()=>{
 					}
 				}
 
-				htmlString += '<img class="fmc-product-target-icon-img" src="https://facemapping.me/img/concerns/'+concernObj.name+'-icon.png"/>'
+				htmlString += '<img class="fmc-product-target-icon-img" src="https://skinanalysis.me/img/concerns/'+concernObj.name+'-icon.png"/>'
 
 				newDiv.innerHTML = htmlString;
 
@@ -6156,7 +6156,7 @@ function setUpZendesk(){
 						console.log("zendesk script for FMC loaded - is new widget: ",fmcZendeskNewWebWidget);
 
 
-						let chatOptions = { suppress:false , tags: ["facemapping"]};
+						let chatOptions = { suppress:false , tags: ["skinanalysis"]};
 
 
 						window.zESettings = {
@@ -6599,7 +6599,7 @@ function fmcToggleFullscreen(){
 			dmlfmcWrapperElement.classList.remove("fmcFullScreen");
 			document.getElementsByTagName("html")[0].style.height = "auto";//savedHtmlHeight + "px";
 			document.getElementsByTagName("body")[0].style.height = "auto"; +  "px";
-			document.getElementById("fmc_fullScreenToggleIcon").style.backgroundImage = 'url("https://facemapping.me/img/fullScreenIcon.svg")';
+			document.getElementById("fmc_fullScreenToggleIcon").style.backgroundImage = 'url("https://skinanalysis.me/img/fullScreenIcon.svg")';
 			console.log("quit full screen");
 			fmcSendGA("main flow", "quit full screen - " + window.fmc_curPage );
 		}else{
@@ -6608,7 +6608,7 @@ function fmcToggleFullscreen(){
 			document.getElementsByTagName("html")[0].style.height = "100vh";
 			document.getElementsByTagName("body")[0].style.height = "100vh";
 			dmlfmcWrapperElement.classList.add("fmcFullScreen");
-			document.getElementById("fmc_fullScreenToggleIcon").style.backgroundImage = 'url("https://facemapping.me/img/fullScreenQuitIcon.svg")';
+			document.getElementById("fmc_fullScreenToggleIcon").style.backgroundImage = 'url("https://skinanalysis.me/img/fullScreenQuitIcon.svg")';
 			console.log("toggle full screen");
 			fmcSendGA("main flow", "enter full screen - " + window.fmc_curPage );
 		}
@@ -7389,10 +7389,10 @@ var fmcCustomizations = {
   afterBuildResultsPageCall : function(){ logOnLocalHostFrontEnd("fmcCustomizations.afterBuildResultsPageCall - nothing to do") }
 }
 
-// setting MSK banner to ON for facemapping.me without any 3rd party path
-if (/facemapping.me($|:)/g.test(window.location.hostname) || /facemapping.me/g.test(fmcForcedPage)){
+// setting MSK banner to ON for skinanalysis.me without any 3rd party path
+if (/skinanalysis.me($|:)/g.test(window.location.hostname) || /skinanalysis.me/g.test(fmcForcedPage)){
   let pathElements
-  if (/facemapping.me($|:)/g.test(window.location.hostname)){
+  if (/skinanalysis.me($|:)/g.test(window.location.hostname)){
     pathElements = window.location.pathname.split("/");
     try{
       if (pathElements[1] == "" || pathElements[1] == "results"){
@@ -7400,7 +7400,7 @@ if (/facemapping.me($|:)/g.test(window.location.hostname) || /facemapping.me/g.t
       }
 
     }catch(err){
-      console.error("Error in getting facemapping.me path elements - ",err)
+      console.error("Error in getting skinanalysis.me path elements - ",err)
       fmcShowMskBanner = false;
     }
 
@@ -7415,7 +7415,7 @@ if (/facemapping.me($|:)/g.test(window.location.hostname) || /facemapping.me/g.t
         }
 
       }catch(err){
-        console.error("Error in getting facemapping.me path elements - ",err)
+        console.error("Error in getting skinanalysis.me path elements - ",err)
         fmcShowMskBanner = false;
       }
     }else{
@@ -7535,7 +7535,7 @@ if (/dermalogica.de($|:)/g.test(window.location.hostname) || /dermalogica.de($|:
           bannerCont.style.backgroundPosition = "center";
           bannerCont.style.backgroundRepeat = "no-repeat";
 
-          bannerCont.style.backgroundImage = "url('https://facemapping.me/img/fmc_germany_samples_banner.jpg')";
+          bannerCont.style.backgroundImage = "url('https://skinanalysis.me/img/fmc_germany_samples_banner.jpg')";
 
           bannerCont.style.boxShadow = "0px 0px 30px rgba(55,143,219,0.2)";
 
@@ -7557,7 +7557,7 @@ if (/dermalogica.de($|:)/g.test(window.location.hostname) || /dermalogica.de($|:
 
           bannerCont.innerHTML = "<p style='color: #555; font-weight: normal; font-size: 30px; width: 350px; max-width:90%; margin:auto; padding-top: "+textPadTop+"'>Erhalte gratis Proben dieser Produkte</p>";
           bannerCont.innerHTML += "<p style='display: inline-block; color: #378FDB; letter-spacing: 2px; font-weight: normal; font-size: 22px; max-width:90%; margin: 20px auto; "+
-                                  "padding-right: 30px; background-image: url(https://facemapping.me/img/right-arrow-blue.svg); "+
+                                  "padding-right: 30px; background-image: url(https://skinanalysis.me/img/right-arrow-blue.svg); "+
                                   "background-repeat: no-repeat; background-position: right center; background-size: 26px;'>bestelle jetzt</p>";
 
 
@@ -7589,7 +7589,7 @@ if (/dermalogica.de($|:)/g.test(window.location.hostname) || /dermalogica.de($|:
 
 }
 
-if (fmcForcedCountry == "DE" && (/facemapping.me($|:)/g.test(window.location.hostname) || /facemappingconsumer-staging.herokuapp.com($|:)/g.test(window.location.hostname) || /localhost($|:)/g.test(window.location.hostname)  ) ){
+if (fmcForcedCountry == "DE" && (/skinanalysis.me($|:)/g.test(window.location.hostname) || /skinanalysisconsumer-staging.herokuapp.com($|:)/g.test(window.location.hostname) || /localhost($|:)/g.test(window.location.hostname)  ) ){
   let pathElements = window.location.pathname.split("/");
   try{
     if ((pathElements[1] == "" || pathElements[1] == "results" ) && fmcForcedPage == ""){
@@ -7597,7 +7597,7 @@ if (fmcForcedCountry == "DE" && (/facemapping.me($|:)/g.test(window.location.hos
     }
 
   }catch(err){
-    console.error("Error in getting facemapping.me path elements - ",err)
+    console.error("Error in getting skinanalysis.me path elements - ",err)
   }
 
 }
@@ -7669,7 +7669,7 @@ if (/nykaa.com($|:)/g.test(window.location.hostname) || window.location.pathname
   console.log("CUSTOMIZE FOR NYKAA");
 
   window.getInternalCampaign = function(){
-    return "dermalogica-facemapping";
+    return "dermalogica-skinanalysis";
   }
 
   window.showProd = function(id, name, url) {
@@ -7743,7 +7743,7 @@ if (/nykaa.com($|:)/g.test(window.location.hostname) || window.location.pathname
   // add indian background on landing page
   document.getElementById("fmcBody").classList.add("fmc-background-ind");
 
-  // disable email request before results (in case we want to activate it on facemapping.me)
+  // disable email request before results (in case we want to activate it on skinanalysis.me)
   fmcRequestEmailBeforeResults = false;
 
   // send product dictionary with submit email --- will be removed for new endpoint
@@ -7867,7 +7867,7 @@ if (/sephora.com($|:)/g.test(window.location.hostname) || window.location.pathna
   document.getElementById("fmc_skin_therapist_tagline_2").style.display = "none"
 
   // update logo at landing page
-  document.querySelector("#fmc_landing_dermalogica_logo img").src = "https://facemapping.me/img/dermalogica_sephora_logos.png";
+  document.querySelector("#fmc_landing_dermalogica_logo img").src = "https://skinanalysis.me/img/dermalogica_sephora_logos.png";
 
   // extra parameters on the store locator endpoint
   fmcStoreLocatorExtraParameters = "&maxStores=200&maxRadius=30";
@@ -7891,7 +7891,7 @@ if (/saloncentric.com($|:)/g.test(window.location.hostname) || window.location.p
   fmc_sendProductDictWithEmail = true;
 
   // update logo at landing page
-  document.querySelector("#fmc_landing_dermalogica_logo img").src = "https://facemapping.me/img/dermalogica_saloncentric_logos.png";
+  document.querySelector("#fmc_landing_dermalogica_logo img").src = "https://skinanalysis.me/img/dermalogica_saloncentric_logos.png";
 
   // extra parameters on the store locator endpoint
   fmcStoreLocatorExtraParameters = "&maxStores=200&maxRadius=30";
@@ -7908,8 +7908,8 @@ if (/ulta.com($|:)/g.test(window.location.hostname) || window.location.pathname.
   // hide prices
   fmc_showPrices = false;
 
-  // show navbar on facemapping.me (and localhost)
-  if (/facemapping.me($|:)/g.test(window.location.hostname)  || /localhost($|:)/g.test(window.location.hostname)){
+  // show navbar on skinanalysis.me (and localhost)
+  if (/skinanalysis.me($|:)/g.test(window.location.hostname)  || /localhost($|:)/g.test(window.location.hostname)){
     fmc_showNavbar = true;
   }else{
     fmc_showNavbar = false;
@@ -7921,7 +7921,7 @@ if (/ulta.com($|:)/g.test(window.location.hostname) || window.location.pathname.
   // change "shop" button text
   fmc_productDict.button_text = "shop now + free gift"
 
-  // disable email request before results (in case we want to activate it on facemapping.me)
+  // disable email request before results (in case we want to activate it on skinanalysis.me)
   fmcRequestEmailBeforeResults = false;
 
   // extra parameters on the store locator endpoint
@@ -7930,7 +7930,7 @@ if (/ulta.com($|:)/g.test(window.location.hostname) || window.location.pathname.
   // regex to filter stores from the store locator endpoint
   fmcStoreLocatorRegexFilter = new RegExp(/(U|u)lta/, 'g');
 
-  // updating navbar for ulta on facemapping.me
+  // updating navbar for ulta on skinanalysis.me
   document.getElementById("fmc_nav_menu").innerHTML = '<ul><li><a id="fmc_ulta_nav_link" href="https://www.ulta.com">Shop Ulta</a></li></ul>';
 	document.querySelector("#fmc_nav_bar a").setAttribute("href","/ulta");
 	document.getElementById("fmc_ulta_branding").style.display = "block";
@@ -8082,7 +8082,7 @@ var isNotUndefined = function(e){return !isUndefined(e)}
 
 
 var preloadBackgroundImage = new Image();
-preloadBackgroundImage.src = "https://facemapping.me/img/screen2-bg.png";
+preloadBackgroundImage.src = "https://skinanalysis.me/img/screen2-bg.png";
 
 
 function setCookie(cname,cvalue, exdays){
@@ -8131,7 +8131,7 @@ function ajaxToBackend(obj){
 				obj.cb(this.responseText);
 			}else{
 				if (this.status == 500 && window.fmc_backendToUse=="https://imb-backend-eu.herokuapp.com" && window.location.href.indexOf("/results/") > -1){
-					window.fmc_backendToUse="https://api.facemapping.me";
+					window.fmc_backendToUse="https://api.skinanalysis.me";
 					ajaxToBackend(obj);
 				}else{
 					console.error("error in loading the result");
@@ -8194,7 +8194,7 @@ function trackGAEvent(name, value) {
 
 let getSpecs = ()=>{
 	let xhr = new XMLHttpRequest();
-	xhr.open("GET", "https://facemapping.me/getSpecs" );
+	xhr.open("GET", "https://skinanalysis.me/getSpecs" );
 	xhr.setRequestHeader('Content-Type', 'text/plain');
 	xhr.onreadystatechange = function(){
 
@@ -8767,7 +8767,7 @@ if (location.pathname.indexOf('/results/')>-1 || window.location.search.indexOf(
 								}else if (window.location.search.indexOf("&be=stg") > -1 || window.location.search.indexOf("?be=stg") > -1){
 									window.fmc_backendToUse = "https://imb-staging.herokuapp.com";
 								}else{
-									window.fmc_backendToUse = "https://api.facemapping.me";
+									window.fmc_backendToUse = "https://api.skinanalysis.me";
 								}
 							}
 

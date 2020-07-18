@@ -466,14 +466,14 @@
         var defaultManifestFilename = defaultModelName + "-weights_manifest.json";
         if (!uri) {
             return {
-                modelBaseUri: 'https://facemapping.me',
+                modelBaseUri: 'https://skinanalysis.me',
                 manifestUri: defaultManifestFilename
             };
         }
         if (uri === '/') {
             return {
-                modelBaseUri: 'https://facemapping.me',
-                manifestUri: "https://facemapping.me/" + defaultManifestFilename
+                modelBaseUri: 'https://skinanalysis.me',
+                manifestUri: "https://skinanalysis.me/" + defaultManifestFilename
             };
         }
         var protocol = uri.startsWith('http://') ? 'http://' : uri.startsWith('https://') ? 'https://' : '';
